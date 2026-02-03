@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【パターン③フル版】推し活をやってるけど、最近年齢による体力低下を感じてる人向け</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #fff;
+        }
+
+        .section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .manga-section {
+            background: linear-gradient(180deg, #FFF5F5 0%, #FFFFFF 100%);
+        }
+
+        .manga-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .manga-illustration {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFF0F5 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .manga-illustration::before {
+            content: '🎨 漫画イラスト';
+            font-size: 24px;
+            color: #999;
+        }
+
+        .manga-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .manga-text strong {
+            color: #E85298;
+            font-size: 24px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .data-note {
+            background: #F0F8FF;
+            border-left: 4px solid #4A90E2;
+            padding: 12px 16px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .problem-section {
+            background: #FAFAFA;
+        }
+
+        .checklist {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #FFF8F8;
+            border-radius: 8px;
+        }
+
+        .checklist-item::before {
+            content: '✓';
+            font-size: 24px;
+            margin-right: 12px;
+            color: #E85298;
+        }
+
+        .article-section {
+            background: #FFFFFF;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .change-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #E85298;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .oshikatsu-section {
+            background: linear-gradient(180deg, #FFF0F5 0%, #FFE5F0 50%, #FFFFFF 100%);
+        }
+
+        .fullwidth-illustration {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FFB6C1 50%, #FFA07A 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .fullwidth-illustration::before {
+            content: '🎤 ライブシーン（見開き大ゴマ）';
+            font-size: 28px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .infographic {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+
+        .circle-diagram {
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            margin: 30px auto;
+            position: relative;
+            background: radial-gradient(circle, #FFE5E5 0%, #FFF5F5 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .center-character {
+            width: 120px;
+            height: 120px;
+            background: #E85298;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .connection-bubble {
+            position: absolute;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-size: 14px;
+        }
+
+        .bubble-1 { top: 10%; left: 10%; }
+        .bubble-2 { top: 10%; right: 10%; }
+        .bubble-3 { bottom: 10%; left: 10%; }
+        .bubble-4 { bottom: 10%; right: 10%; }
+
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #E85298 0%, #FFB6C1 100%);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            text-align: right;
+            padding-right: 50%;
+        }
+
+        .timeline-item:nth-child(even) {
+            text-align: left;
+            padding-left: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .timeline-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #E85298;
+            margin-bottom: 8px;
+        }
+
+        .product-section {
+            background: #F8F8F8;
+        }
+
+        .product-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-box {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .feature-text {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .testimonial {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFA07A 100%);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+
+        .testimonial-name {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .testimonial-text {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .data-section {
+            background: #F0F8FF;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-box {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #E85298;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #E85298 0%, #FFB6C1 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #E85298;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 20px 60px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-subtext {
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 24px;
+            }
+            .card-grid,
+            .product-features,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                text-align: left;
+                padding: 0 20px 0 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 1. 導入：娘の独白 -->
+<section class="section manga-section">
+    <div class="manga-panel">
+        <div class="manga-illustration"></div>
+        <div class="manga-text">
+            <strong>「ママは、推し活が大好き」</strong>
+            毎週のようにライブに通うママ<br>
+            推しグッズに囲まれた部屋<br>
+            推し友との楽しそうな会話<br>
+            推しの話をする時の輝く目<br><br>
+            <strong>でも最近、少し心配...</strong>
+        </div>
+        <div class="data-note">
+            📊 40-50代女性の約半数が推し活中
+        </div>
+    </div>
+</section>
+
+<!-- 2. ママの本音 -->
+<section class="section problem-section">
+    <h2 class="section-title">最近、こんなこと感じていませんか？</h2>
+
+    <div class="manga-panel">
+        <div class="manga-illustration" style="height: 300px; background: linear-gradient(135deg, #F0F0F5 0%, #E8E8F0 100%);"></div>
+        <div class="manga-text">
+            <strong>推しは大好き。推し活も楽しい。</strong><br>
+            <strong>でも...</strong>
+        </div>
+    </div>
+
+    <div class="checklist">
+        <div class="checklist-item">ライブの途中で疲れを感じるようになった</div>
+        <div class="checklist-item">以前より回復に時間がかかる</div>
+        <div class="checklist-item">遠征の移動が辛くなってきた</div>
+        <div class="checklist-item">早朝物販がキツくなってきた</div>
+        <div class="checklist-item">ライブ翌日の仕事が以前より辛い</div>
+        <div class="checklist-item">「このまま続けられるかな...」と不安</div>
+    </div>
+
+    <div class="manga-panel">
+        <div class="manga-illustration" style="height: 350px; background: linear-gradient(135deg, #E8E8F0 0%, #F5F5FA 100%);"></div>
+        <div class="manga-text">
+            <strong>ママの心の声</strong><br><br>
+            「推しは大好き。推し活も楽しい」<br>
+            「でも、体力が追いつかなくなってきた」<br>
+            「年齢のせいかな...」<br><br>
+            <strong>「このまま続けられるか不安」</strong><br>
+            <strong>「推し活、諦めたくない」</strong>
+        </div>
+        <div class="data-note">
+            📊 推し活中のママの多くが、体力面での不安を感じています
+        </div>
+    </div>
+</section>
+
+<!-- 3. 転機：推し友との会話 -->
+<section class="section manga-section">
+    <h2 class="section-title">ある日、推し友と...</h2>
+
+    <div class="manga-panel">
+        <div class="manga-illustration"></div>
+        <div class="manga-text" style="text-align: left; padding: 20px 40px;">
+            <p>ライブ後、推し友とカフェで</p>
+            <br>
+            <p><strong>ママ：</strong>「最近、ライブで疲れるようになっちゃって...」</p>
+            <p><strong>ママ：</strong>「年齢のせいかな」</p>
+            <br>
+            <p><strong>推し友：</strong>「わかる！私も同じだった」</p>
+            <p><strong>推し友：</strong>「去年くらいから、途中で疲れを感じるようになって」</p>
+            <br>
+            <p><strong>ママ：</strong>「だよね...このまま推し活続けられるか不安で」</p>
+            <br>
+            <p><strong>推し友：</strong>「でもね、これ飲み始めてから楽になったの」</p>
+            <p style="text-align: center; margin: 20px 0;">
+                <span style="background: #FFE5E5; padding: 10px 20px; border-radius: 20px; display: inline-block;">
+                    ✨ すっぽん小町 ✨
+                </span>
+            </p>
+            <p><strong>推し友：</strong>「最近、最後まで全力で楽しめるようになったよ」</p>
+            <p><strong>推し友：</strong>「翌日の回復も早くなった気がする」</p>
+            <br>
+            <p style="text-align: center;"><strong style="color: #E85298;">ママ「私も、もっと推し活を楽しみたい」</strong></p>
+        </div>
+        <div class="data-note">
+            📊 推し活中のママの多くが、体力サポートのためにすっぽん小町を愛用中
+        </div>
+    </div>
+</section>
+
+<!-- 4. 推し活を全力で楽しむ日々 -->
+<section class="section oshikatsu-section">
+    <h2 class="section-title">今では、推し活を全力で楽しめる</h2>
+
+    <div class="manga-panel" style="background: white;">
+        <div class="manga-illustration" style="height: 300px;"></div>
+        <div class="manga-text">
+            「すっぽん小町を飲み始めた」<br><br>
+            朝起きるのが楽になってきた<br>
+            仕事の後も、余裕が出てきた<br>
+            ライブ後の疲労感が軽くなった気がする<br><br>
+            <strong>「次のライブ、楽しみ！」</strong>
+        </div>
+    </div>
+
+    <div class="fullwidth-illustration"></div>
+
+    <div class="manga-panel" style="background: #FFF8F8;">
+        <div class="manga-text">
+            <strong>「最後まで全力で楽しめた！」</strong><br><br>
+            疲れを気にせず推しを応援できる<br>
+            ペンライトを振り続けられる<br>
+            推しの全曲を全力で楽しめる<br><br>
+            <strong>「疲れを気にせず推し活できるって、幸せ！」</strong><br>
+            <strong>「推し活を諦めなくてよかった！」</strong>
+        </div>
+    </div>
+
+    <div class="card-grid" style="margin-top: 40px;">
+        <div class="change-card">
+            <div class="card-icon">🎤</div>
+            <div class="card-title">ライブも楽々</div>
+            <div class="card-text">最後まで全力で楽しめる<br>体力の心配が減った</div>
+        </div>
+        <div class="change-card">
+            <div class="card-icon">🛍️</div>
+            <div class="card-title">早朝物販も</div>
+            <div class="card-text">早起きも苦じゃなくなった<br>グッズもしっかり買える</div>
+        </div>
+        <div class="change-card">
+            <div class="card-icon">🚄</div>
+            <div class="card-title">遠征も安心</div>
+            <div class="card-text">移動の疲れを気にせず楽しめる<br>遠征も積極的に</div>
+        </div>
+        <div class="change-card">
+            <div class="card-icon">💖</div>
+            <div class="card-title">推し活を長く</div>
+            <div class="card-text">これからもずっと続けられる<br>諦めなくていい</div>
+        </div>
+    </div>
+
+    <div class="manga-text" style="text-align: center; margin: 30px 0; font-size: 16px;">
+        娘の視点：<br>
+        <strong style="color: #666;">「ママ、最近元気になった気がする」</strong><br>
+        <strong style="color: #666;">「推し活、もっと楽しめてそう」</strong>
+    </div>
+</section>
+
+<!-- 5. 推し活の幅が広がる -->
+<section class="section article-section">
+    <h2 class="section-title">体力に余裕ができたら、<br>推し活の幅が広がった</h2>
+
+    <div class="card-grid">
+        <div class="change-card">
+            <div class="card-icon">🎭</div>
+            <div class="card-title">参戦回数が増えた</div>
+            <div class="card-text">
+                <strong>体力の心配が減って</strong><br><br>
+                → もっとライブに行けるように<br>
+                → 月2-3回参戦できる<br>
+                → 推しにもっと会える
+            </div>
+        </div>
+
+        <div class="change-card">
+            <div class="card-icon">🗾</div>
+            <div class="card-title">遠征も積極的に</div>
+            <div class="card-text">
+                <strong>移動の疲れを気にせず</strong><br><br>
+                → 遠征を楽しめる<br>
+                → 推し友と遠征旅行<br>
+                → 各地のライブに参戦
+            </div>
+        </div>
+
+        <div class="change-card">
+            <div class="card-icon">👯‍♀️</div>
+            <div class="card-title">推し友との時間</div>
+            <div class="card-text">
+                <strong>体力に余裕ができて</strong><br><br>
+                → 推し友との時間も充実<br>
+                → ライブ後のカフェも楽しめる<br>
+                → 推しトークで盛り上がる
+            </div>
+        </div>
+
+        <div class="change-card">
+            <div class="card-icon">✨</div>
+            <div class="card-title">おしゃれも楽しむ</div>
+            <div class="card-text">
+                <strong>推しに会う準備</strong><br><br>
+                → 美容やファッションも<br>
+                → 推しに会う時、綺麗でいたい<br>
+                → おしゃれが楽しい
+            </div>
+        </div>
+    </div>
+
+    <div class="data-note" style="margin-top: 30px;">
+        📊 推し活ママ、年間平均11.4万円投資 / 本気で推し活を楽しんでいる
+    </div>
+</section>
+
+<!-- 6. 推し活を通じた世界の広がり -->
+<section class="section article-section">
+    <h2 class="section-title">推し活を楽しみながら、<br>人生も豊かに</h2>
+
+    <div class="infographic">
+        <div class="circle-diagram">
+            <div class="center-character">ママ</div>
+            <div class="connection-bubble bubble-1">
+                👯‍♀️ 推し友<br>
+                「一緒に<br>楽しもう！」
+            </div>
+            <div class="connection-bubble bubble-2">
+                🌟 新しい出会い<br>
+                「推しを通じて<br>繋がれた」
+            </div>
+            <div class="connection-bubble bubble-3">
+                💖 推しコミュニティ<br>
+                「応援するのが<br>楽しい」
+            </div>
+            <div class="connection-bubble bubble-4">
+                🎤 推しイベント<br>
+                「全部参加<br>したい！」
+            </div>
+        </div>
+
+        <div class="manga-text" style="margin-top: 30px;">
+            <strong>推し活を全力で楽しめるようになったら、世界が広がった</strong><br><br>
+            「推し友との時間が増えた」<br>
+            「新しいファンとも知り合えた」<br>
+            「推しの新しい魅力を発見できた」<br>
+            「推し活が、もっと楽しくなった」
+        </div>
+
+        <div class="manga-text" style="background: #FFF0F5; padding: 20px; border-radius: 12px; margin-top: 20px;">
+            娘の視点：<br>
+            <strong style="color: #E85298;">「ママ、前より推し活を楽しんでる！」</strong><br>
+            <strong style="color: #E85298;">「体力の心配をしなくなった」</strong>
+        </div>
+
+        <div class="data-note">
+            📊 推し友の33%が、多様なコミュニティで活動 / 推し活を通じて世界が広がる
+        </div>
+    </div>
+</section>
+
+<!-- 7. 推し活から派生した変化 -->
+<section class="section article-section" style="background: #FAFAFA;">
+    <h2 class="section-title">推し活を続けながら、<br>人生全体が充実</h2>
+
+    <div class="card-grid">
+        <div class="change-card">
+            <div class="card-icon">💄</div>
+            <div class="card-title">美容・健康</div>
+            <div class="card-text">
+                <strong>「推しに会う時、綺麗でいたい」</strong><br><br>
+                → スキンケアに力を入れる<br>
+                → ウォーキングを始めた<br>
+                → 健康への意識が高まる
+            </div>
+        </div>
+
+        <div class="change-card">
+            <div class="card-icon">👗</div>
+            <div class="card-title">ファッション</div>
+            <div class="card-text">
+                <strong>「ライブに着ていく服」</strong><br><br>
+                → おしゃれが楽しい<br>
+                → 推し色のコーデ<br>
+                → 自分に自信がつく
+            </div>
+        </div>
+
+        <div class="change-card">
+            <div class="card-icon">💪</div>
+            <div class="card-title">体力維持</div>
+            <div class="card-text">
+                <strong>「推し活を続けたい」</strong><br><br>
+                → ウォーキングを続ける<br>
+                → 健康的な生活習慣<br>
+                → ずっと推し活できる体力
+            </div>
+        </div>
+
+        <div class="change-card">
+            <div class="card-icon">😊</div>
+            <div class="card-title">前向きな気持ち</div>
+            <div class="card-text">
+                <strong>「推し活が生きがい」</strong><br><br>
+                → 仕事も家事も頑張れる<br>
+                → 毎日が充実<br>
+                → 人生が楽しい
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 8. さらに先の未来 -->
+<section class="section article-section">
+    <h2 class="section-title">ママの未来は、まだまだ続いていく</h2>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="timeline-icon">🎤</div>
+                <div class="timeline-title">もっとライブに行きたい</div>
+                <div class="card-text">
+                    体力に余裕ができて<br>
+                    → 参戦回数を増やせる<br>
+                    推しにもっと会える
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="timeline-icon">✈️</div>
+                <div class="timeline-title">海外公演にも挑戦</div>
+                <div class="card-text">
+                    体力の心配が減って<br>
+                    → 海外遠征も視野に<br>
+                    パスポート取得済み
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="timeline-icon">🧳</div>
+                <div class="timeline-title">推し友と旅行</div>
+                <div class="card-text">
+                    遠征を兼ねた旅行<br>
+                    → 推し友との絆が深まる<br>
+                    旅行の計画が楽しい
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="timeline-icon">💿</div>
+                <div class="timeline-title">グッズも全部集めたい</div>
+                <div class="card-text">
+                    早朝物販も楽々<br>
+                    → グッズコンプリート目指す<br>
+                    コレクションが増える喜び
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="timeline-icon">👨‍👩‍👧</div>
+                <div class="timeline-title">家族との時間も大切に</div>
+                <div class="card-text">
+                    推し活で元気になって<br>
+                    → 家族との時間も充実<br>
+                    笑顔で過ごせる
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="manga-text" style="background: #FFF0F5; padding: 40px; border-radius: 12px; margin-top: 40px;">
+        娘の視点：<br>
+        <strong style="color: #E85298; font-size: 26px;">「ママは、推し活を全力で楽しんでる」</strong><br>
+        <strong style="color: #E85298; font-size: 26px;">「体力の心配をせずに、推し活を続けられる」</strong><br>
+        <strong style="color: #E85298; font-size: 26px;">「これからも、ずっと推し活できそう」</strong>
+    </div>
+
+    <div class="data-note">
+        📊 推し活をきっかけに、家族との会話が増えたママが急増中
+    </div>
+</section>
+
+<!-- 9. 家族も気づく -->
+<section class="section manga-section">
+    <h2 class="section-title">家族も安心してる</h2>
+
+    <div class="manga-panel">
+        <div class="manga-illustration"></div>
+        <div class="manga-text" style="text-align: left; padding: 20px 40px;">
+            <p><strong>家族の団らん</strong></p>
+            <br>
+            <p><strong>娘：</strong>「ママ、前より元気になった気がする」</p>
+            <p><strong>娘：</strong>「推し活、これからもずっと続けられそうだね」</p>
+            <br>
+            <p><strong>夫：</strong>「楽しそうで何よりだよ」</p>
+            <p><strong>夫：</strong>「体力的にも無理してないみたいで安心した」</p>
+            <br>
+            <p><strong>ママ：</strong>「推し活を、これからもずっと続けたい」</p>
+            <p><strong>ママ：</strong>「すっぽん小町があるから、続けられる」</p>
+            <p><strong>ママ：</strong>「諦めなくてよかった」</p>
+        </div>
+        <div class="data-note">
+            📊 推し活を続けるママの多くが、家族との会話が増えたと回答
+        </div>
+    </div>
+</section>
+
+<!-- 10. 娘の総括 -->
+<section class="section manga-section">
+    <div class="manga-panel" style="background: linear-gradient(135deg, #FFE5E5 0%, #FFF0F5 100%);">
+        <div class="manga-illustration" style="height: 500px;"></div>
+        <div class="manga-text" style="padding: 40px;">
+            <strong style="font-size: 32px; color: #E85298;">「ママは、推し活を全力で楽しんでる」</strong>
+            <br><br>
+            <strong style="font-size: 28px; color: #333;">「体力の心配をせずに、<br>推し活を続けられる」</strong>
+            <br><br>
+            <strong style="font-size: 28px; color: #333;">「これからも、<br>ずっと推し活を楽しめる」</strong>
+            <br><br>
+            <strong style="font-size: 32px; color: #E85298;">「すっぽん小町が、<br>ママの推し活を支えてくれてる」</strong>
+        </div>
+        <div class="data-note">
+            📊 40-50代女性の約半数が推し活中 / 体力サポートで長く楽しめる
+        </div>
+    </div>
+</section>
+
+<!-- 11. 商品説明 -->
+<section class="section product-section">
+    <h2 class="section-title">推し活を、もっと長く、<br>もっと楽しむために</h2>
+
+    <div class="manga-text" style="background: white; padding: 30px; border-radius: 12px; margin-bottom: 30px;">
+        <strong style="font-size: 24px; color: #333;">家事・育児・仕事に追われて<br>なかなか思うようにはいかない日々...</strong>
+        <br><br>
+        もしも「なんだか余裕がないなぁ」と感じたら<br>
+        <strong style="font-size: 22px; color: #E85298;">『すっぽん小町』に頼ってみませんか？</strong>
+    </div>
+
+    <div style="background: white; padding: 40px; border-radius: 12px; margin-bottom: 30px;">
+        <p style="font-size: 18px; line-height: 2; text-align: center;">
+            『すっぽん小町』は、忙しいママがたくさん<br>
+            消費するアミノ酸をはじめ、コラーゲンや鉄分・<br>
+            ビタミンなど女性にうれしい成分が<br>
+            ギュッと詰まったサプリメントです。
+        </p>
+    </div>
+
+    <div class="product-features">
+        <div class="feature-box">
+            <div class="feature-icon">🎤</div>
+            <div class="feature-title">推し活を全力で</div>
+            <div class="feature-text">ライブも物販も遠征も<br>全力で、長く楽しめる</div>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon">✨</div>
+            <div class="feature-title">体力に余裕</div>
+            <div class="feature-text">体力の心配を減らして<br>推し活をもっと楽しむ</div>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon">🌟</div>
+            <div class="feature-title">ずっと続けられる</div>
+            <div class="feature-text">推し活を諦めたくない<br>長く続けたい方へ</div>
+        </div>
+    </div>
+
+    <div class="manga-text" style="background: white; padding: 40px; border-radius: 12px; margin: 30px 0;">
+        <strong style="font-size: 24px; color: #E85298;">「推し活を、諦めたくない」</strong><br>
+        <strong style="font-size: 20px; color: #333;">「これからも、ずっと楽しみたい」</strong><br>
+        <strong style="font-size: 20px; color: #333;">すっぽん小町が、あなたの推し活を支えます</strong>
+    </div>
+
+    <div style="background: white; padding: 40px; border-radius: 12px; text-align: center;">
+        <p style="font-size: 16px; color: #666; margin-bottom: 20px;">全国のママから実感のお声が続々と届いています</p>
+        <div style="width: 100%; height: 250px; background: #F5F5F5; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999;">
+            📝 お客様の手書きハガキ画像<br>（実際のLPでは本物の画像を使用）
+        </div>
+    </div>
+</section>
+
+<!-- 12. お客様の声 -->
+<section class="section article-section">
+    <h2 class="section-title">推し活を全力で楽しんでいる<br>ママたち</h2>
+
+    <div class="testimonial-grid">
+        <div class="testimonial">
+            <div class="testimonial-avatar">👩</div>
+            <div class="testimonial-name">Y.Mさん（50歳・アイドル推し）</div>
+            <div class="testimonial-text">
+                「最近ライブで疲れを感じるようになって、このまま続けられるか不安でした。すっぽん小町を飲み始めてから、最後まで全力で楽しめるように！推し活を諦めなくてよかった。これからもずっと推しを応援し続けます」
+            </div>
+        </div>
+
+        <div class="testimonial">
+            <div class="testimonial-avatar">👩</div>
+            <div class="testimonial-name">K.Sさん（48歳・俳優推し）</div>
+            <div class="testimonial-text">
+                「遠征の移動が辛くなってきて、近場のライブしか行けなくなっていました。推し友に勧められてすっぽん小町を試したら、遠征も楽しめるように！推しの全国ツアー、全部参戦できそうです」
+            </div>
+        </div>
+
+        <div class="testimonial">
+            <div class="testimonial-avatar">👩</div>
+            <div class="testimonial-name">R.Tさん（52歳・2.5次元推し）</div>
+            <div class="testimonial-text">
+                「早朝物販に起きられなくなって、グッズを諦めることが増えてました。すっぽん小町を飲むようになってから、早起きも苦じゃなくなった！推しのグッズ、全部集められるようになりました」
+            </div>
+        </div>
+
+        <div class="testimonial">
+            <div class="testimonial-avatar">👩</div>
+            <div class="testimonial-name">N.Aさん（49歳・スポーツ推し）</div>
+            <div class="testimonial-text">
+                「スタジアムでの応援が体力的にキツくなってきてました。すっぽん小町のおかげで、今シーズンも全試合応援に行けてます！推しのチームを、これからもずっと応援し続けたいです」
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 13. データで安心感 -->
+<section class="section data-section">
+    <h2 class="section-title">推し活、ずっと楽しめます</h2>
+
+    <div class="stats-grid">
+        <div class="stat-box">
+            <div class="stat-number">46-60%</div>
+            <div class="stat-label">40-50代女性の<br>約半数が推し活中</div>
+        </div>
+
+        <div class="stat-box">
+            <div class="stat-number">11.4万円</div>
+            <div class="stat-label">年間平均投資額<br>本気で楽しんでる</div>
+        </div>
+
+        <div class="stat-box">
+            <div class="stat-number">増加中</div>
+            <div class="stat-label">体力サポートで<br>長く楽しむママ増</div>
+        </div>
+
+        <div class="stat-box">
+            <div class="stat-number">4.1%</div>
+            <div class="stat-label">秘密にしてるのは<br>わずか</div>
+        </div>
+    </div>
+
+    <div class="manga-text" style="margin-top: 40px;">
+        <strong style="font-size: 28px; color: #E85298;">「推し活を、諦めたくない」</strong><br>
+        <strong style="font-size: 22px; color: #333;">これからも、ずっと楽しもう</strong>
+    </div>
+</section>
+
+<!-- 14. 商品詳細 -->
+<section class="section product-section">
+    <h2 class="section-title">すっぽん小町について</h2>
+
+    <div style="background: white; padding: 40px; border-radius: 12px; margin-bottom: 20px;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <div style="width: 200px; height: 200px; background: #FFE5E5; border-radius: 12px; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #999;">
+                商品パッケージ画像
+            </div>
+        </div>
+
+        <p style="font-size: 18px; line-height: 2; text-align: center; margin-bottom: 30px;">
+            <strong style="font-size: 24px; color: #E85298;">販売総数 2,700万袋突破</strong><br>
+            <span style="font-size: 14px; color: #666;">※2024年10月当社調べ</span>
+        </p>
+
+        <div style="background: #FFF8F8; padding: 30px; border-radius: 12px; margin-bottom: 20px;">
+            <p style="font-size: 18px; line-height: 2; text-align: center;">
+                『すっぽん小町』は<strong style="color: #E85298;">お得な定期コース</strong>が大人気。
+            </p>
+            <p style="font-size: 18px; line-height: 2; text-align: center;">
+                毎回割引があり<strong style="color: #E85298;">いつでも中止・変更OK</strong>です。
+            </p>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <p style="font-size: 18px; margin-bottom: 15px;">初回のお届け時にプレゼントがもらえる</p>
+            <p style="font-size: 24px; color: #E85298; font-weight: bold;">Webキャンペーンも実施中！</p>
+        </div>
+
+        <div style="background: #FFF0F5; padding: 30px; border-radius: 12px; text-align: center;">
+            <p style="font-size: 16px; line-height: 2; margin-bottom: 20px;">
+                自分に合うか分からない...という方も<br>
+                <strong style="font-size: 20px; color: #E85298;">30日間返品保証</strong>を設けているので、<br>
+                安心してお試しください♪
+            </p>
+            <p style="font-size: 18px; line-height: 2;">
+                バタバタの毎日を頑張るママへ。<br>
+                <strong style="color: #E85298;">『すっぽん小町』</strong>が、キレイと元気をサポートする<br>
+                心強いパートナーとなれますように。
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- 15. CTA -->
+<section class="section cta-section">
+    <div class="cta-title">
+        推し活を、ずっと楽しみたい方へ<br>
+        体力の心配を減らして、<br>
+        全力で推しを応援しよう
+    </div>
+
+    <a href="#" class="cta-button">公式サイトで詳しく見る</a>
+
+    <div class="cta-subtext">
+        30日間返品保証 / 毎回お得な割引あり / いつでも中止・変更OK
+    </div>
+</section>
+
+</body>
+</html>

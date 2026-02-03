@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【パターン②】推し活はやってたけど、今はやれてない人向け</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #fff;
+        }
+
+        .section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .manga-section {
+            background: linear-gradient(180deg, #FFF5F5 0%, #FFFFFF 100%);
+        }
+
+        .manga-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .manga-illustration {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFF0F5 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .manga-illustration::before {
+            content: '🎨 漫画イラスト';
+            font-size: 24px;
+            color: #999;
+        }
+
+        .manga-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .manga-text strong {
+            color: #E85298;
+            font-size: 24px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .data-note {
+            background: #F0F8FF;
+            border-left: 4px solid #4A90E2;
+            padding: 12px 16px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .flashback-section {
+            background: linear-gradient(180deg, #F0F0F5 0%, #FFFFFF 100%);
+        }
+
+        .flashback-panel .manga-illustration {
+            background: linear-gradient(135deg, #D5D5E0 0%, #E8E8F0 100%);
+        }
+
+        .article-section {
+            background: #FFFFFF;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .change-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #E85298;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .oshikatsu-section {
+            background: linear-gradient(180deg, #FFF0F5 0%, #FFE5F0 50%, #FFFFFF 100%);
+        }
+
+        .fullwidth-illustration {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FFB6C1 50%, #FFA07A 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .fullwidth-illustration::before {
+            content: '🎤 ライブシーン（見開き大ゴマ）';
+            font-size: 28px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .product-section {
+            background: #F8F8F8;
+        }
+
+        .benefit-box {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .benefit-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #E85298;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .benefit-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #E85298 0%, #FFB6C1 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #E85298;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 20px 60px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-subtext {
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 24px;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 1. 導入：娘の独白 -->
+<section class="section manga-section">
+    <div class="manga-panel">
+        <div class="manga-illustration"></div>
+        <div class="manga-text">
+            <strong>「ママ、昔は推し活してたよね？」</strong>
+            部屋の隅にしまわれた推しグッズ<br>
+            「最近、全然行ってないね」<br><br>
+            <strong>ママ「...もう無理なのよ」</strong>
+        </div>
+    </div>
+</section>
+
+<!-- 2. 回想：楽しかった頃 -->
+<section class="section oshikatsu-section">
+    <h2 class="section-title">あの頃は、楽しかった</h2>
+    <div class="manga-panel">
+        <div class="manga-illustration"></div>
+        <div class="manga-text">
+            ライブに通って<br>
+            推し友と盛り上がって<br>
+            グッズを集めて<br><br>
+            <strong>「推し活が、生きがいだった」</strong>
+        </div>
+    </div>
+</section>
+
+<!-- 3. でも今は... -->
+<section class="section flashback-section">
+    <h2 class="section-title">でも今は...</h2>
+    <div class="manga-panel flashback-panel">
+        <div class="manga-illustration"></div>
+        <div class="manga-text">
+            <strong>「体力が続かなくて、諦めた」</strong><br><br>
+            ・ライブで途中から座り込んでしまった<br>
+            ・遠征の移動だけで疲れ果てた<br>
+            ・早朝物販に起きられなくなった<br><br>
+            「好きな気持ちはあるのに...」<br>
+            「でも、もう無理なんだ」
+        </div>
+    </div>
+</section>
+
+<!-- 4. 転機：ママ友との再会 -->
+<section class="section manga-section">
+    <h2 class="section-title">ある日、昔の推し友と再会</h2>
+    <div class="manga-panel">
+        <div class="manga-illustration"></div>
+        <div class="manga-text" style="text-align: left; padding: 20px 40px;">
+            <p><strong>推し友：</strong>「久しぶり！最近ライブ来ないよね？」</p>
+            <p><strong>ママ：</strong>「体力が続かなくて...諦めたの」</p>
+            <br>
+            <p><strong>推し友：</strong>「実は私も同じだったんだ」</p>
+            <p><strong>ママ：</strong>「え？でも今日ライブ来たって...」</p>
+            <br>
+            <p><strong>推し友：</strong>「これ飲み始めてから、また行けるようになったの」</p>
+            <p style="text-align: center; margin: 20px 0;">
+                <span style="background: #FFE5E5; padding: 10px 20px; border-radius: 20px; display: inline-block;">
+                    ✨ すっぽん小町 ✨
+                </span>
+            </p>
+            <br>
+            <p><strong>推し友：</strong>「諦めなくていいんだよ」</p>
+            <br>
+            <p style="text-align: center;"><strong style="color: #E85298;">「もう一度...やってみたい」</strong></p>
+        </div>
+        <div class="data-note">
+            📊 推し活を諦めかけた40-50代ママが、再び楽しめるようになったケースが増加中
+        </div>
+    </div>
+</section>
+
+<!-- 5. もう一度、推し活へ -->
+<section class="section oshikatsu-section">
+    <h2 class="section-title">そして、久しぶりのライブへ...</h2>
+
+    <div class="manga-panel" style="background: white;">
+        <div class="manga-illustration" style="height: 250px;"></div>
+        <div class="manga-text">
+            <strong>「何年ぶりだろう...」</strong><br>
+            「また途中で座り込んだらどうしよう...」
+        </div>
+    </div>
+
+    <div class="fullwidth-illustration"></div>
+
+    <div class="manga-panel" style="background: #FFF8F8;">
+        <div class="manga-text">
+            <strong>「最後まで立ってられた！」</strong><br>
+            <strong>「全力で楽しめた！」</strong><br>
+            <strong>「諦めなくてよかった！」</strong>
+        </div>
+    </div>
+
+    <div class="card-grid" style="margin-top: 40px;">
+        <div class="change-card">
+            <div class="card-icon">🎤</div>
+            <div class="card-title">復活ライブ</div>
+            <div class="card-text">最後まで全力で楽しめた</div>
+        </div>
+        <div class="change-card">
+            <div class="card-icon">👯‍♀️</div>
+            <div class="card-title">推し友との再会</div>
+            <div class="card-text">昔の仲間とまた会えた</div>
+        </div>
+        <div class="change-card">
+            <div class="card-icon">🚄</div>
+            <div class="card-title">遠征も復活</div>
+            <div class="card-text">諦めてた遠征にも挑戦</div>
+        </div>
+        <div class="change-card">
+            <div class="card-icon">💖</div>
+            <div class="card-title">生きがいが戻った</div>
+            <div class="card-text">推し活が人生の楽しみに</div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. 人生も再び輝く -->
+<section class="section article-section">
+    <h2 class="section-title">推し活を再開したら、<br>人生も再び輝き始めた</h2>
+
+    <div class="card-grid">
+        <div class="change-card">
+            <div class="card-icon">✨</div>
+            <div class="card-title">元気が戻った</div>
+            <div class="card-text">
+                推し活を諦めてから失っていた<br>
+                → 元気と前向きな気持ちが戻った
+            </div>
+        </div>
+
+        <div class="change-card">
+            <div class="card-icon">👗</div>
+            <div class="card-title">おしゃれも復活</div>
+            <div class="card-text">
+                ライブに着ていく服<br>
+                → また楽しめるようになった
+            </div>
+        </div>
+
+        <div class="change-card">
+            <div class="card-icon">🏃‍♀️</div>
+            <div class="card-title">健康への意識</div>
+            <div class="card-text">
+                推し活を続けたい<br>
+                → ウォーキングも始めた
+            </div>
+        </div>
+
+        <div class="change-card">
+            <div class="card-icon">😊</div>
+            <div class="card-title">家族も喜ぶ</div>
+            <div class="card-text">
+                笑顔が戻ったママ<br>
+                → 家族も安心してる
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. 家族の反応 -->
+<section class="section manga-section">
+    <h2 class="section-title">家族も気づいた</h2>
+
+    <div class="manga-panel">
+        <div class="manga-illustration"></div>
+        <div class="manga-text" style="text-align: left; padding: 20px 40px;">
+            <p><strong>娘：</strong>「ママ、また推し活始めたんだね」</p>
+            <p><strong>娘：</strong>「前より楽しそう！」</p>
+            <br>
+            <p><strong>夫：</strong>「昔の笑顔が戻ったね」</p>
+            <br>
+            <p style="text-align: center;"><strong style="color: #E85298;">「諦めなくてよかった」</strong></p>
+            <p style="text-align: center;"><strong style="color: #E85298;">「推し活が、また私の生きがいになった」</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- 8. 娘の総括 -->
+<section class="section manga-section">
+    <div class="manga-panel" style="background: linear-gradient(135deg, #FFE5E5 0%, #FFF0F5 100%);">
+        <div class="manga-illustration" style="height: 400px;"></div>
+        <div class="manga-text" style="padding: 40px;">
+            <strong style="font-size: 28px; color: #E85298;">「ママが推し活を再開して、<br>笑顔が戻ってきた」</strong>
+            <br><br>
+            <strong style="font-size: 24px; color: #333;">「諦めなくてよかった」</strong>
+            <br><br>
+            <strong style="font-size: 24px; color: #333;">「すっぽん小町が、<br>ママの推し活を取り戻してくれた」</strong>
+        </div>
+    </div>
+</section>
+
+<!-- 9. 商品訴求 -->
+<section class="section product-section">
+    <h2 class="section-title">「諦めた」を、<br>「もう一度」に変える</h2>
+
+    <div class="benefit-box">
+        <div class="benefit-title">すっぽん小町が選ばれる理由</div>
+        <div class="benefit-text">
+            ✅ 体力サポート：諦めてた推し活をもう一度<br>
+            ✅ 美容もケア：推しに会う準備も万全に<br>
+            ✅ 続けやすい：1日2粒、無理なく続けられる
+        </div>
+    </div>
+
+    <div class="manga-text" style="background: white; padding: 30px; border-radius: 12px; margin: 30px 0;">
+        <strong style="font-size: 22px; color: #E85298;">「諦めなくていい」</strong><br>
+        <strong style="font-size: 18px; color: #333;">すっぽん小町が、あなたの推し活を応援します</strong>
+    </div>
+</section>
+
+<!-- 10. CTA -->
+<section class="section cta-section">
+    <div class="cta-title">
+        推し活、もう一度始めませんか？
+    </div>
+
+    <a href="#" class="cta-button">詳しく見る</a>
+
+    <div class="cta-subtext">
+        30日間返品保証 / 毎回お得な割引あり
+    </div>
+</section>
+
+</body>
+</html>

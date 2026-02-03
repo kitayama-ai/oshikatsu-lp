@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>すっぽん小町 推し活ママLP - 3パターン比較</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFF0F5 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            color: #E85298;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 60px;
+        }
+
+        .patterns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .pattern-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pattern-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(232, 82, 152, 0.2);
+        }
+
+        .pattern-number {
+            background: linear-gradient(135deg, #E85298 0%, #FFB6C1 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .pattern-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .pattern-target {
+            background: #FFF8F8;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #E85298;
+        }
+
+        .target-label {
+            font-size: 12px;
+            color: #E85298;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .target-text {
+            font-size: 15px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .pattern-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .view-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #E85298 0%, #FFB6C1 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .view-button:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 900px) {
+            .patterns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>すっぽん小町 推し活ママLP</h1>
+        <p class="subtitle">ターゲット別 3パターン比較</p>
+
+        <div class="patterns">
+            <!-- パターン① -->
+            <div class="pattern-card">
+                <div class="pattern-number">①</div>
+                <h2 class="pattern-title">推し活デビュー応援型</h2>
+
+                <div class="pattern-target">
+                    <div class="target-label">ターゲット</div>
+                    <div class="target-text">推しはいるけど、推し活まではやってない人</div>
+                </div>
+
+                <div class="pattern-description">
+                    <strong>心理状態：</strong><br>
+                    ・好きな人はいるけど、ライブには行ってない<br>
+                    ・「今更感」や体力的な不安<br>
+                    ・若い子ばかりで浮きそう<br><br>
+
+                    <strong>訴求ポイント：</strong><br>
+                    「今から始めても遅くない」<br>
+                    「同世代もたくさんいる」<br>
+                    「体力があればできる」
+                </div>
+
+                <a href="pattern1.html" class="view-button">LPを見る</a>
+            </div>
+
+            <!-- パターン② -->
+            <div class="pattern-card">
+                <div class="pattern-number">②</div>
+                <h2 class="pattern-title">推し活カムバック型</h2>
+
+                <div class="pattern-target">
+                    <div class="target-label">ターゲット</div>
+                    <div class="target-text">推し活はやってたけど、今はやれてない人</div>
+                </div>
+
+                <div class="pattern-description">
+                    <strong>心理状態：</strong><br>
+                    ・昔はやってたけど体力が落ちた<br>
+                    ・「もう無理」という諦め<br>
+                    ・罪悪感や喪失感<br><br>
+
+                    <strong>訴求ポイント：</strong><br>
+                    「もう一度楽しめる」<br>
+                    「諦めなくていい」<br>
+                    「生きがいを取り戻せる」
+                </div>
+
+                <a href="pattern2.html" class="view-button">LPを見る</a>
+            </div>
+
+            <!-- パターン③ -->
+            <div class="pattern-card">
+                <div class="pattern-number">③</div>
+                <h2 class="pattern-title">推し活継続サポート型</h2>
+
+                <div class="pattern-target">
+                    <div class="target-label">ターゲット</div>
+                    <div class="target-text">推し活をやってるけど、最近年齢による体力低下を感じてる人</div>
+                </div>
+
+                <div class="pattern-description">
+                    <strong>心理状態：</strong><br>
+                    ・今も推し活してるけど疲れる<br>
+                    ・以前より回復に時間がかかる<br>
+                    ・続けられるか不安<br><br>
+
+                    <strong>訴求ポイント：</strong><br>
+                    「もっと楽に続けられる」<br>
+                    「全力で楽しめる」<br>
+                    「これからも長く推し活できる」
+                </div>
+
+                <a href="pattern3.html" class="view-button">LPを見る</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
