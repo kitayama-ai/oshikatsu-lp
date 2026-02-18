@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【パターン④フル版】子育てで推し活離れてたけど再開できる状態、でも最近の事情がわからず腰が重い人向け</title>
+    <title>【パターン④フル版】子育てで現場から離れてたけど再開できる状態、でも最近の事情がわからず腰が重い人向け</title>
     <style>
         * {
             margin: 0;
@@ -418,31 +418,104 @@
             opacity: 0.9;
         }
 
-        /* 会話セクション専用 */
-        .chat-bubble {
-            background: #F5F5F5;
-            border-radius: 16px;
-            padding: 16px 20px;
-            margin-bottom: 12px;
-            max-width: 85%;
-            font-size: 16px;
-            line-height: 1.7;
+        /* ===== LINE風チャットUI ===== */
+        .line-chat {
+            background: #7494C0;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .chat-bubble.right {
-            margin-left: auto;
-            background: #FFE5F0;
-        }
-
-        .chat-speaker {
-            font-size: 13px;
+        .line-chat-header {
+            text-align: center;
+            color: white;
+            font-size: 14px;
             font-weight: bold;
-            color: #999;
-            margin-bottom: 4px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 16px;
         }
 
-        .chat-speaker.pink {
-            color: #E85298;
+        .line-msg {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 12px;
+            gap: 8px;
+        }
+
+        .line-msg.right {
+            flex-direction: row-reverse;
+        }
+
+        .line-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #DDD;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .line-bubble {
+            background: white;
+            border-radius: 18px;
+            padding: 10px 16px;
+            max-width: 75%;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333;
+            position: relative;
+        }
+
+        .line-msg.right .line-bubble {
+            background: #8DE055;
+            color: #333;
+        }
+
+        .line-time {
+            font-size: 11px;
+            color: rgba(255,255,255,0.7);
+            flex-shrink: 0;
+            align-self: flex-end;
+        }
+
+        .line-stamp {
+            background: transparent;
+            padding: 5px;
+        }
+
+        .line-stamp img, .line-stamp-emoji {
+            font-size: 64px;
+            display: block;
+        }
+
+        .line-product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 240px;
+        }
+
+        .line-product-img {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #FFE5E5, #FFF0F5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .line-product-text {
+            padding: 10px 12px;
+            font-size: 13px;
+            color: #333;
+            line-height: 1.5;
         }
 
         /* 心の声セクション */
@@ -473,68 +546,13 @@
             background: linear-gradient(180deg, #FFF8F0 0%, #FFF5F5 100%);
         }
 
-        /* Before/After比較 */
-        .before-after {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .before-box {
-            background: #F5F0F5;
-            border-radius: 12px;
-            padding: 30px;
-            border: 2px solid #E0D5E0;
-        }
-
-        .after-box {
-            background: #FFF0F5;
-            border-radius: 12px;
-            padding: 30px;
-            border: 2px solid #FFB6C1;
-        }
-
-        .before-box h3, .after-box h3 {
-            text-align: center;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        .before-box h3 { color: #999; }
-        .after-box h3 { color: #E85298; }
-
-        .before-box ul, .after-box ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .before-box li, .after-box li {
-            padding: 8px 0;
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        .before-box li::before {
-            content: '…';
-            margin-right: 8px;
-            color: #999;
-        }
-
-        .after-box li::before {
-            content: '♡';
-            margin-right: 8px;
-            color: #E85298;
-        }
-
         @media (max-width: 768px) {
             .section-title {
                 font-size: 24px;
             }
             .card-grid,
             .product-features,
-            .testimonial-grid,
-            .before-after {
+            .testimonial-grid {
                 grid-template-columns: 1fr;
             }
             .stats-grid {
@@ -548,8 +566,11 @@
             .manga-panel {
                 padding: 25px;
             }
-            .chat-bubble {
-                max-width: 95%;
+            .line-chat {
+                max-width: 100%;
+            }
+            .line-bubble {
+                max-width: 80%;
             }
         }
     </style>
@@ -563,29 +584,32 @@
     <div class="manga-panel">
         <div class="manga-illustration"></div>
         <div class="manga-text">
-            <strong>「ママはね、むかし推しがいたんだよ」</strong>
-            クローゼットの奥にしまわれた<br>
-            ペンライトと、色あせたうちわ<br>
-            たまにスマホで何か見ては<br>
-            ちょっとだけ笑って、すぐ閉じるママ<br><br>
-            <strong>「あれ、なんで使わないの？って<br>ずっと気になってた」</strong>
+            <strong>「ママは、ずっと推しが好き」</strong>
+            寝る前にスマホでMV見てるの、知ってる<br>
+            新曲が出ると、イヤホンして何回もリピートしてる<br>
+            サブスクの再生回数、たぶんすごいことになってる<br><br>
+            <strong>でも──ライブには行かなくなった</strong><br><br>
+            <span style="font-size: 16px; color: #999;">
+            クローゼットの奥に、ペンライトがあるの知ってる<br>
+            たまに出して見ては、そっと戻してるのも
+            </span>
         </div>
         <div class="data-note">
-            📊 推し活中断経験のあるママは約4割（ネオマーケティング2024年調査）
+            📊 推し活中断経験のあるママは約4割。でもその69.2%が「変わらず好きなまま」
         </div>
     </div>
 </section>
 
 <!-- ============================================ -->
-<!-- 2. 回想：あの頃のママ -->
+<!-- 2. ネットでは追ってる、でも現場は遠い -->
 <!-- ============================================ -->
 <section class="section flashback-section">
-    <h2 class="section-title">あの頃のママは、<br>ちょっと別人だった</h2>
+    <h2 class="section-title">好きな気持ちは、<br>ずっとそこにあった</h2>
 
     <div class="manga-panel">
         <div class="manga-illustration" style="height: 350px; background: linear-gradient(135deg, #FFE0B2 0%, #FFF0F5 100%);"></div>
         <div class="manga-text">
-            <strong>独身の頃のママ</strong><br><br>
+            <strong>あの頃のこと、忘れたことはない</strong><br><br>
             ファンクラブの先行で当たって大騒ぎしたり<br>
             推し友と遠征の夜行バスで眠れなかったり<br>
             新しいうちわ作るために夜中まで文字入れしたり<br><br>
@@ -599,185 +623,279 @@
 
     <div class="manga-panel" style="background: #FFF8F0;">
         <div class="manga-text">
-            <strong style="color: #333; font-size: 22px;">でも、子どもが生まれて</strong><br><br>
-            当たり前だけど、全部止まった<br><br>
-            ファンクラブは更新しなかった<br>
-            Xは通知を切った<br>
-            ペンライトはクローゼットの奥へ<br><br>
+            <strong style="color: #333; font-size: 22px;">子育てが始まって、現場からは離れた</strong><br><br>
+            でも、完全にやめたわけじゃない<br><br>
+            新曲はサブスクでちゃんと聴いてる<br>
+            YouTubeの新しいMVも、子どもが寝たらチェックしてる<br>
+            Xは見る専だけど、推しの投稿にはこっそり「いいね」してる<br><br>
             <span style="font-size: 16px; color: #999;">
-            「推し活なんてやってる場合じゃない」<br>
-            「子どもが一番大事に決まってる」<br>
-            そう自分に言い聞かせてた
+            好きなのは変わらない<br>
+            ただ、「現場に行く」っていうスイッチだけが<br>
+            いつの間にかオフになってた
             </span>
         </div>
         <div class="data-note">
-            📊 推しの活動休止・離脱後も69.2%が「変わらず好きなまま」（フェリシモ調査）
+            📊 ママの推し活経験率は6割。「在宅推し」としてSNSやサブスクで追い続ける層が増加中
         </div>
     </div>
 </section>
 
 <!-- ============================================ -->
-<!-- 3. 現在：行けるはずなのに、行けない -->
+<!-- 3. 現在：行けるはずなのに、腰が重い -->
 <!-- ============================================ -->
 <section class="section problem-section">
-    <h2 class="section-title">子どもも大きくなった。<br>時間もできた。<br>でも──</h2>
+    <h2 class="section-title">子どもも大きくなった。<br>時間もできてきた。<br>でも──</h2>
 
     <div class="manga-panel">
         <div class="manga-illustration" style="height: 300px; background: linear-gradient(135deg, #F0F0F5 0%, #E8E8F0 100%);"></div>
         <div class="manga-text">
-            <strong style="color: #333;">「行ける」はずなのに、腰が上がらない</strong>
+            <strong style="color: #333;">「行けるかも」と思いつつ、<br>なんか腰が上がらない</strong>
         </div>
     </div>
 
     <div class="checklist">
-        <div class="checklist-item">ファンクラブの仕組み変わりすぎてて、もう入り方がわからない</div>
-        <div class="checklist-item">チケットって今全部電子なの？ MOALA？ tixeebox？ 何それ</div>
-        <div class="checklist-item">Xが荒れてるらしい。インプレゾンビ？鍵垢？ 意味わからない</div>
-        <div class="checklist-item">離れてた間のコンテンツ、全然追えてない。今さら追える気がしない</div>
-        <div class="checklist-item">ファンの空気感、変わってそう。出戻りって浮かないかな</div>
-        <div class="checklist-item">そもそも久しぶりに「自分のために」動くことが、なんか申し訳ない</div>
+        <div class="checklist-item">ファンクラブの仕組み変わりすぎてて、入り直す気力がわかない</div>
+        <div class="checklist-item">チケットって今ぜんぶ電子？ MOALA？ tixeebox？ ついていけない</div>
+        <div class="checklist-item">Xが荒れてるらしい。インプレゾンビ？鍵垢移行？ 見る専でよかった…</div>
+        <div class="checklist-item">何年分ものコンテンツ、追いきれる気がしない。供給過多すぎる</div>
+        <div class="checklist-item">ファンの空気感も変わってそう。現場の暗黙のルールとか忘れてる</div>
+        <div class="checklist-item">そもそも、朝からバタバタの毎日で、自分のために動く余裕がない</div>
     </div>
 
     <div class="inner-voice">
         <p>
-            好きな気持ちは消えてない<br>
-            推しの新曲、こっそりサブスクで聴いてる<br>
-            YouTubeのMV、子どもが寝た後にイヤホンで見てる<br><br>
-            <span class="highlight">「行きたい」って気持ちは、ある</span><br><br>
-            でも、久しぶりすぎて<br>
-            何からどうすればいいか、わからない<br>
-            <span style="color: #999; font-size: 15px;">──浦島太郎すぎて、もう無理かもしれない</span>
+            推しの新曲、サブスクではちゃんと聴いてる<br>
+            YouTubeのMV、何回も再生してる<br>
+            Xのタイムライン、毎日追ってる<br><br>
+            <span class="highlight">「現場行きたいな」って気持ちは、ずっとある</span><br><br>
+            でもFC入り直すところから始めるのが<br>
+            なんかもう、果てしなく感じる<br>
+            <span style="color: #999; font-size: 15px;">──そしてなにより、朝起きた瞬間からもう余裕がない</span>
         </p>
     </div>
 
     <div class="data-note">
-        📊 推し活の復帰障壁で最も多いのは「時間の確保」と「情報のキャッチアップ」
+        📊 推し活の復帰障壁で多いのは「情報のキャッチアップ」と「日常の余裕のなさ」
     </div>
 </section>
 
 <!-- ============================================ -->
-<!-- 4. 転機：ママ友との会話 -->
+<!-- 4. 毎日のこと：朝の余裕のなさ -->
 <!-- ============================================ -->
-<section class="section manga-section">
-    <h2 class="section-title">ある日、幼稚園のお迎えで</h2>
+<section class="section article-section">
+    <h2 class="section-title">まず、毎日のことだった</h2>
 
     <div class="manga-panel">
-        <div class="manga-illustration"></div>
-        <div class="manga-text" style="text-align: left; padding: 20px 20px;">
-            <div class="chat-speaker">ママ友・ゆかり</div>
-            <div class="chat-bubble">
-                ねえ、先週のツアー行ってきたの！<br>
-                旦那に預けて、産後初の現場！
-            </div>
+        <div class="manga-illustration" style="height: 300px; background: linear-gradient(135deg, #E8E8F0 0%, #F5F5FA 100%);"></div>
+        <div class="manga-text">
+            <strong style="color: #333; font-size: 22px;">推し活の前に、そもそも朝がしんどい</strong><br><br>
+            目覚ましが鳴っても「あと5分」が止められない<br>
+            子どもの支度、朝ごはん、自分の準備──<br>
+            バタバタのまま家を出て、気づいたら夕方<br><br>
+            <span style="font-size: 16px; color: #666;">
+            夜になるともう何もする気になれない<br>
+            推しのMVを開いても、途中で寝落ちしてることが増えた
+            </span>
+        </div>
+    </div>
 
-            <div class="chat-speaker pink" style="text-align: right;">ママ（さとみ）</div>
-            <div class="chat-bubble right">
-                えっ！行けたの？すごい…！<br>
-                私もう何年も行けてなくて…
-            </div>
+    <div class="manga-panel" style="background: #FFF8F0;">
+        <div class="manga-text">
+            <span style="font-size: 16px; color: #666;">
+            そんな時、ママ友のゆかりに教えてもらったのが
+            </span><br><br>
+            <span style="background: #FFE5E5; padding: 12px 24px; border-radius: 20px; display: inline-block; font-size: 20px;">
+                ✨ すっぽん小町 ✨
+            </span><br><br>
+            <span style="font-size: 16px; color: #666;">
+            「私も朝きつかったんだけど、<br>
+            毎日2粒続けてたら、なんか朝の感じが変わってきたの」<br>
+            ──そう言われて、半信半疑で始めてみた
+            </span>
+        </div>
+    </div>
 
-            <div class="chat-speaker">ゆかり</div>
-            <div class="chat-bubble">
-                わかるわかる。私も最初めっちゃ腰重かった<br>
-                チケットの取り方もわかんないし<br>
-                ファンクラブも入り直さなきゃだし
-            </div>
-
-            <div class="chat-speaker pink" style="text-align: right;">さとみ</div>
-            <div class="chat-bubble right">
-                そうなの！<br>
-                電子チケットとか全然わからなくて<br>
-                出戻り感やばくない…？
-            </div>
-
-            <div class="chat-speaker">ゆかり</div>
-            <div class="chat-bubble">
-                やばかった笑 でもね<br>
-                行ったらそんなの全部どうでもよくなった<br>
-                推しがそこにいるだけで、もう全部OK
-            </div>
-
-            <div class="chat-speaker">ゆかり</div>
-            <div class="chat-bubble">
-                あとね、これ関係あるかわかんないけど<br>
-                最近すっぽん小町飲み始めたら<br>
-                朝の「あと5分…」がなくなって<br>
-                自分のことに使える余裕ができた気がするの
-            </div>
-
-            <div style="text-align: center; margin: 25px 0;">
-                <span style="background: #FFE5E5; padding: 12px 24px; border-radius: 20px; display: inline-block; font-size: 18px;">
-                    ✨ すっぽん小町 ✨
-                </span>
-            </div>
-
-            <div class="chat-speaker">ゆかり</div>
-            <div class="chat-bubble">
-                夜泣きで起こされても次の日引きずらなくなったし<br>
-                「自分のために使える時間」が増えた感覚？<br>
-                それで、FC入り直す気力が出たんだよね笑
-            </div>
-
-            <div class="chat-speaker pink" style="text-align: right;">さとみ</div>
-            <div class="chat-bubble right" style="text-align: center;">
-                <strong style="color: #E85298; font-size: 18px;">
-                    …私も、もう一回やってみようかな
-                </strong>
+    <div class="card-grid">
+        <div class="change-card">
+            <div class="card-icon">🌅</div>
+            <div class="card-title">朝の目覚め</div>
+            <div class="card-text">
+                「あと5分」がなくなってきた<br>
+                目覚ましの前に起きる日も<br>
+                子どもの支度の前に<br>
+                自分のコーヒー淹れる余裕
             </div>
         </div>
-        <div class="data-note">
-            📊 N1インタビューより：「小町を飲んでから夜泣き対応後の目覚めが全然違う」（31歳・2歳半男児ママ）
+        <div class="change-card">
+            <div class="card-icon">🍳</div>
+            <div class="card-title">夕方の余裕</div>
+            <div class="card-text">
+                仕事終わりのぐったり感が<br>
+                前より軽くなった気がする<br>
+                晩ごはんの品数が<br>
+                自然とひとつ増えた
+            </div>
         </div>
+        <div class="change-card">
+            <div class="card-icon">🌙</div>
+            <div class="card-title">夜の自分時間</div>
+            <div class="card-text">
+                推しのMVを最後まで見れる<br>
+                途中で寝落ちしなくなった<br>
+                この時間が<br>
+                じわじわ嬉しい
+            </div>
+        </div>
+        <div class="change-card">
+            <div class="card-icon">😊</div>
+            <div class="card-title">なんか、いい感じ</div>
+            <div class="card-text">
+                劇的に変わったわけじゃない<br>
+                でも「余裕がある日」が<br>
+                ちょっとずつ増えてきた<br>
+                それだけで全然違う
+            </div>
+        </div>
+    </div>
+
+    <div class="manga-text" style="text-align: center; margin: 20px 0; font-size: 16px;">
+        娘の視点：<br>
+        <strong style="color: #666;">「ママ、最近朝ごはん作るの早くなったね」</strong><br>
+        <strong style="color: #666;">「あと、なんか機嫌いい日が増えた気がする」</strong>
+    </div>
+
+    <div class="data-note">
+        📊 N1インタビューより：「飲み始めてから、朝の目覚めが全然違う」（31歳ママ）
     </div>
 </section>
 
 <!-- ============================================ -->
-<!-- 5. リハビリ期間：ちょっとずつ戻る日々 -->
+<!-- 5. 転機：日常が整ったら、推し活が視野に入ってきた -->
+<!-- ============================================ -->
+<section class="section manga-section">
+    <h2 class="section-title">日常がちょっと整ったら、<br>ふと思った</h2>
+
+    <div class="manga-panel">
+        <div class="manga-illustration" style="height: 300px;"></div>
+        <div class="manga-text">
+            <strong>「──そういえば、ツアー始まるんだよな」</strong><br><br>
+            Xのタイムラインに流れてきた<br>
+            推しのツアー告知<br><br>
+            いつもなら「いいな…」で終わってた<br>
+            でも、今回はなぜか<br><br>
+            <strong>「…行けるかも、しれない？」</strong><br><br>
+            <span style="font-size: 16px; color: #666;">
+            朝に余裕ができて、夜も自分の時間が持てるようになって<br>
+            「自分のために動く」ことが、そんなに遠く感じなくなってた
+            </span>
+        </div>
+    </div>
+
+    <!-- LINE風チャット -->
+    <div class="line-chat">
+        <div class="line-chat-header">ゆかり 🎀</div>
+
+        <div class="line-msg right">
+            <div class="line-time">21:32</div>
+            <div class="line-bubble">ねえゆかり<br>ツアー告知見た？</div>
+        </div>
+
+        <div class="line-msg">
+            <div class="line-avatar">👩</div>
+            <div class="line-bubble">見た見た！！<br>やばくない？？</div>
+            <div class="line-time">21:32</div>
+        </div>
+
+        <div class="line-msg right">
+            <div class="line-time">21:33</div>
+            <div class="line-bubble">あのさ……<br>私も行きたいなって<br>ちょっと思ってて</div>
+        </div>
+
+        <div class="line-msg">
+            <div class="line-avatar">👩</div>
+            <div class="line-bubble">え！！まって！！<br>めっちゃ嬉しいんだけど！！</div>
+            <div class="line-time">21:33</div>
+        </div>
+
+        <div class="line-msg right">
+            <div class="line-time">21:34</div>
+            <div class="line-bubble">でもFC入り直すところからだし<br>電子チケットとかも全然わかんなくて…<br>浦島太郎すぎてさ😂</div>
+        </div>
+
+        <div class="line-msg">
+            <div class="line-avatar">👩</div>
+            <div class="line-bubble">大丈夫！！私も最初そうだった<br>全部教えるから！！<br>一緒に連番しよ！！！🎤</div>
+            <div class="line-time">21:34</div>
+        </div>
+
+        <div class="line-msg right">
+            <div class="line-time">21:35</div>
+            <div class="line-bubble">ありがとう😭😭<br>なんか最近、小町飲んでるおかげか<br>朝の余裕できてきて<br>自分のこと考えられるようになったの</div>
+        </div>
+
+        <div class="line-msg right">
+            <div class="line-time">21:35</div>
+            <div class="line-bubble">それで「あ、もしかして行けるかも」って<br>思えた感じ</div>
+        </div>
+
+        <div class="line-msg">
+            <div class="line-avatar">👩</div>
+            <div class="line-bubble">わかるわかる！！<br>余裕できると「やりたいこと」見えてくるよね<br>推しは推せるときに推せだよ！！！✨</div>
+            <div class="line-time">21:36</div>
+        </div>
+
+        <div class="line-msg right">
+            <div class="line-time">21:36</div>
+            <div class="line-bubble">よし、FC入り直す！！<br>ちょっとやり方教えて笑</div>
+        </div>
+
+        <div class="line-msg">
+            <div class="line-avatar">👩</div>
+            <div class="line-bubble">任せて🫡🫡🫡<br>今からスクショ送る！！</div>
+            <div class="line-time">21:36</div>
+        </div>
+    </div>
+
+    <div class="data-note" style="margin-top: 20px;">
+        📊 推し友との活動が33%。ママ友が推し活復帰のきっかけになるケースが増加中
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 6. リハビリ期間 -->
 <!-- ============================================ -->
 <section class="section oshikatsu-section">
     <h2 class="section-title">推し活リハビリ、はじめました</h2>
-
-    <div class="manga-panel" style="background: white;">
-        <div class="manga-illustration" style="height: 300px;"></div>
-        <div class="manga-text">
-            まずはファンクラブに入り直した<br>
-            5年ぶりにログインしたら、会員番号がなんか懐かしかった<br><br>
-            Xのアカウントも復活させた<br>
-            …インプレゾンビ多すぎて一瞬ひるんだけど<br>
-            推し友のリストを作り直したら、なんとかなった<br><br>
-            <strong>「あれ、電子チケットって意外と簡単…？」</strong>
-        </div>
-    </div>
 
     <div class="card-grid">
         <div class="change-card">
             <div class="card-icon">📱</div>
             <div class="card-title">FC入り直した</div>
             <div class="card-text">
-                会員サイト全部変わってて<br>
+                会員サイトが全部変わってて<br>
                 浦島太郎だったけど<br>
-                ゆかりにLINEで聞きながら<br>
+                ゆかりのスクショ見ながら<br>
                 なんとか先行申し込みできた
             </div>
         </div>
         <div class="change-card">
             <div class="card-icon">🎫</div>
-            <div class="card-title">チケット取れた</div>
+            <div class="card-title">先行当たった</div>
             <div class="card-text">
-                FC先行、当たった…！<br>
-                手が震えた<br>
+                FC先行、当選メール来た…！<br>
+                思わず声出た<br>
                 電子チケットの表示練習を<br>
-                3回くらいやった（心配性）
+                念のため3回やった（心配性）
             </div>
         </div>
         <div class="change-card">
             <div class="card-icon">👗</div>
             <div class="card-title">何着てく問題</div>
             <div class="card-text">
-                産前のライブ服、入らない<br>
-                でも推し色のトップスを<br>
-                久しぶりに買った<br>
-                鏡の前で、ちょっと笑えた
+                久しぶりすぎて何着ればいいか<br>
+                ゆかりとZARA見に行った<br>
+                推し色のトップス買って<br>
+                鏡の前で、ちょっとニヤけた
             </div>
         </div>
         <div class="change-card">
@@ -785,9 +903,9 @@
             <div class="card-title">予習が楽しい</div>
             <div class="card-text">
                 離れてた間の曲を聴き込む日々<br>
-                子どもが寝た後の<br>
-                イヤホン時間が<br>
-                いつの間にか宝物になってた
+                朝の支度しながら流すと<br>
+                ノリノリで洗い物できる<br>
+                子どもにも「ママの曲」って認識されてる
             </div>
         </div>
     </div>
@@ -795,15 +913,15 @@
     <div class="manga-text" style="text-align: center; margin: 30px 0; font-size: 16px;">
         娘の視点：<br>
         <strong style="color: #666;">「ママ、最近なんかスマホ見てニコニコしてる」</strong><br>
-        <strong style="color: #666;">「あと、朝ごはん作るの早くなった気がする」</strong>
+        <strong style="color: #666;">「あの歌、私も好きだよ」</strong>
     </div>
 </section>
 
 <!-- ============================================ -->
-<!-- 6. 当日：久しぶりの現場 -->
+<!-- 7. 当日：久しぶりの現場 -->
 <!-- ============================================ -->
 <section class="section oshikatsu-section" style="background: linear-gradient(180deg, #FFE5F0 0%, #FFF0F5 50%, #FFFFFF 100%);">
-    <h2 class="section-title">そして、5年ぶりの現場へ</h2>
+    <h2 class="section-title">そして、久しぶりの現場へ</h2>
 
     <div class="manga-panel" style="background: white;">
         <div class="manga-text">
@@ -812,9 +930,8 @@
             どこからか聞こえる推しの名前<br>
             あの独特の高揚感<br><br>
             <span style="font-size: 16px; color: #999;">
-            隣の席の子、たぶん大学生くらい<br>
-            「出戻りおばさんだと思われるかな」って一瞬思った<br>
-            でも、その子が「一緒に盛り上がりましょう！」って笑ってくれた
+            ゆかりが隣で「大丈夫、全部楽しめばいいんだよ」って<br>
+            笑ってくれた
             </span>
         </div>
     </div>
@@ -825,14 +942,14 @@
         <div class="manga-text">
             <strong>「──あ、この感じだ」</strong><br><br>
             照明が落ちて、イントロが流れた瞬間<br>
-            5年分の「行きたかった」が全部こみ上げてきた<br><br>
-            知ってる曲も、知らない曲も<br>
+            ずっとサブスクで聴いてた曲が、目の前で鳴ってる<br><br>
+            知ってる曲も、現場で初めて聴く曲も<br>
             全部全部、最高だった<br><br>
             <strong>「推しは推せるときに推せ」って<br>
             こういうことだったんだ</strong><br><br>
             <span style="font-size: 16px; color: #999;">
             ──帰りの電車で、ゆかりに「ありがとう」ってLINEした<br>
-            「次いつ？」って返ってきた。もう予定立ててる
+            「次いつ？」って返ってきた。もう次の予定、考えてる
             </span>
         </div>
     </div>
@@ -843,33 +960,33 @@
 </section>
 
 <!-- ============================================ -->
-<!-- 7. 推し活再開後の変化 -->
+<!-- 8. 日常と推し活、どっちも楽しい -->
 <!-- ============================================ -->
 <section class="section article-section">
     <h2 class="section-title">推し活を再開したら、<br>毎日がちょっとずつ変わった</h2>
 
     <div class="card-grid">
         <div class="change-card">
-            <div class="card-icon">🌅</div>
-            <div class="card-title">朝の余裕</div>
+            <div class="card-icon">☀️</div>
+            <div class="card-title">朝の過ごし方</div>
             <div class="card-text">
-                <strong>「あと5分…」がなくなった</strong><br><br>
-                小町を続けてるおかげか<br>
-                朝の準備に余裕ができて<br>
-                推しの新曲を聴きながら支度する<br>
-                それだけで、一日のスイッチが入る
+                <strong>推しの曲を聴きながら支度する</strong><br><br>
+                毎日2粒の習慣を続けてたら<br>
+                朝の余裕ができてきた<br>
+                コーヒー飲みながら推しの投稿見る<br>
+                これだけで一日のスイッチが入る
             </div>
         </div>
 
         <div class="change-card">
             <div class="card-icon">📲</div>
-            <div class="card-title">SNSが楽しい</div>
+            <div class="card-title">SNSの楽しみ方</div>
             <div class="card-text">
-                <strong>通知オンにした</strong><br><br>
+                <strong>見る専から「参加する側」へ</strong><br><br>
                 Xの空気にも慣れてきた<br>
                 推し友とのリプが楽しい<br>
                 供給を追えるだけで幸せ<br>
-                「在宅」と「現場」のハイブリッド生活
+                在宅と現場のハイブリッド生活
             </div>
         </div>
 
@@ -878,8 +995,8 @@
             <div class="card-title">ゆかりとの時間</div>
             <div class="card-text">
                 <strong>ママ友が「推し友」になった</strong><br><br>
-                お迎えの立ち話が<br>
-                推しの話で30分超える<br>
+                学校行事の後に推しの話で<br>
+                気づいたら30分経ってる<br>
                 次の現場の連番相手<br>
                 子育ての戦友が推し友にもなった
             </div>
@@ -892,8 +1009,8 @@
                 <strong>「推しに会う日」がある生活</strong><br><br>
                 久しぶりにコスメカウンター行った<br>
                 推し色のリップ買った<br>
-                「ママじゃない自分」を<br>
-                楽しめるようになった
+                洋服選ぶのも楽しくなった<br>
+                「自分のための自分」を楽しめてる
             </div>
         </div>
     </div>
@@ -904,7 +1021,7 @@
 </section>
 
 <!-- ============================================ -->
-<!-- 8. 世界が広がった -->
+<!-- 9. 世界が広がった -->
 <!-- ============================================ -->
 <section class="section article-section" style="background: #FAFAFA;">
     <h2 class="section-title">推し活が、<br>ママの世界を広げていく</h2>
@@ -915,7 +1032,7 @@
             <div class="connection-bubble bubble-1">
                 👯‍♀️ 推し友<br>
                 「連番しよ」<br>
-                「遠征計画立てよ」
+                「遠征計画しよ」
             </div>
             <div class="connection-bubble bubble-2">
                 📱 SNSの世界<br>
@@ -935,22 +1052,18 @@
         </div>
 
         <div class="manga-text" style="margin-top: 30px;">
-            <strong>「ママ」以外の自分を取り戻せた</strong><br><br>
-            「子育てに追われるだけの毎日」から<br>
-            「好きなものがある毎日」に変わった<br><br>
-            <span style="font-size: 16px; color: #666;">
+            <strong>「ママ」以外の自分を楽しめるようになった</strong><br><br>
             子どもの話、仕事の話、家事の話<br>
             それしかなかった世界に<br>
             「推しの話」が加わっただけで<br>
             こんなに毎日が違って見えるなんて
-            </span>
         </div>
 
         <div class="manga-text" style="background: #FFF0F5; padding: 20px; border-radius: 12px; margin-top: 20px;">
             娘の視点：<br>
             <strong style="color: #E85298;">「ママがね、自分の話するようになったの」</strong><br>
             <strong style="color: #E85298;">「いつも私のことか、パパのことだったのに」</strong><br>
-            <strong style="color: #E85298;">「推しの話するママ、かわいい」</strong>
+            <strong style="color: #E85298;">「推しの話するママ、なんか楽しそう」</strong>
         </div>
 
         <div class="data-note">
@@ -960,7 +1073,7 @@
 </section>
 
 <!-- ============================================ -->
-<!-- 9. さらに先の未来 -->
+<!-- 10. さらに先の未来 -->
 <!-- ============================================ -->
 <section class="section article-section">
     <h2 class="section-title">ママの未来は、<br>まだまだ広がっていく</h2>
@@ -969,7 +1082,7 @@
         <div class="timeline-item">
             <div class="timeline-content">
                 <div class="timeline-icon">🎤</div>
-                <div class="timeline-title">次のツアーも行きたい</div>
+                <div class="timeline-title">次のツアーも行く</div>
                 <div class="card-text">
                     FC先行の申し込み日を<br>
                     カレンダーに入れた<br>
@@ -984,9 +1097,10 @@
                 <div class="timeline-icon">🚄</div>
                 <div class="timeline-title">ゆかりと遠征計画</div>
                 <div class="card-text">
-                    大阪公演、ゆかりと連番で行く<br>
+                    大阪公演、連番で行く<br>
                     子どもは実家にお願い済み<br>
-                    ついでにご当地グルメも調査中
+                    ついでにご当地グルメも<br>
+                    調査中
                 </div>
             </div>
         </div>
@@ -1007,12 +1121,12 @@
         <div class="timeline-item">
             <div class="timeline-content">
                 <div class="timeline-icon">👨‍👩‍👧</div>
-                <div class="timeline-title">子どもと一緒に</div>
+                <div class="timeline-title">いつか子どもと</div>
                 <div class="card-text">
-                    娘がママの推しに興味持ち始めた<br>
-                    「このお兄ちゃんかっこいいね」って<br>
-                    いつか一緒に現場行ける日が<br>
-                    来るかもしれない
+                    最近、子どもがママの推しに<br>
+                    興味を持ち始めた<br>
+                    「この曲好きー！」って<br>
+                    いつか一緒に現場行けたら最高
                 </div>
             </div>
         </div>
@@ -1022,10 +1136,9 @@
                 <div class="timeline-icon">💫</div>
                 <div class="timeline-title">自分の人生を楽しむ</div>
                 <div class="card-text">
-                    「ママだから」で諦めてたこと<br>
-                    全部やり直せる気がしてる<br>
                     推し活が教えてくれたのは<br>
-                    「自分を後回しにしなくていい」ということ
+                    「自分を後回しにしなくていい」<br>
+                    ということだった
                 </div>
             </div>
         </div>
@@ -1034,7 +1147,7 @@
     <div class="manga-text" style="background: #FFF0F5; padding: 40px; border-radius: 12px; margin-top: 40px;">
         娘の視点：<br>
         <strong style="color: #E85298; font-size: 26px;">「ママが楽しそうにしてると、<br>私もなんか嬉しい」</strong><br><br>
-        <strong style="color: #E85298; font-size: 26px;">「大人になっても好きなものがあるって<br>すごいことなんだね」</strong>
+        <strong style="color: #E85298; font-size: 26px;">「大人になっても好きなものがあるって<br>かっこいいと思う」</strong>
     </div>
 
     <div class="data-note">
@@ -1043,40 +1156,40 @@
 </section>
 
 <!-- ============================================ -->
-<!-- 10. 家族の反応 -->
+<!-- 11. 家族の反応 -->
 <!-- ============================================ -->
 <section class="section manga-section">
     <h2 class="section-title">家族も、気づいてた</h2>
 
     <div class="manga-panel">
         <div class="manga-illustration"></div>
-        <div class="manga-text" style="text-align: left; padding: 20px 20px;">
+        <div class="manga-text" style="text-align: left; padding: 20px;">
 
-            <div class="chat-speaker">娘（5歳）</div>
-            <div class="chat-bubble">
-                ママ、最近おうた聞いてるね<br>
-                あのお兄ちゃん？かっこいいね
-            </div>
+            <!-- LINE風で家族の会話 -->
+            <div class="line-chat" style="max-width: 100%;">
+                <div class="line-chat-header">家族グループ 🏠</div>
 
-            <div class="chat-speaker">旦那</div>
-            <div class="chat-bubble">
-                最近、なんか楽しそうだよね<br>
-                ライブ行く日、いつでも言って<br>
-                俺が見とくから
-            </div>
+                <div class="line-msg">
+                    <div class="line-avatar">👧</div>
+                    <div class="line-bubble">ママ最近たのしそう<br>あの歌、私もすきだよ</div>
+                    <div class="line-time">19:45</div>
+                </div>
 
-            <div class="chat-speaker pink" style="text-align: right;">ママ</div>
-            <div class="chat-bubble right">
-                ……ありがとう<br>
-                「行っておいで」って言ってもらえるの<br>
-                こんなに嬉しいと思わなかった
-            </div>
+                <div class="line-msg">
+                    <div class="line-avatar">🧑</div>
+                    <div class="line-bubble">ライブ行く日、いつでも言って<br>俺が見とくから</div>
+                    <div class="line-time">19:47</div>
+                </div>
 
-            <div class="chat-speaker pink" style="text-align: right;">ママ</div>
-            <div class="chat-bubble right">
-                あのね、毎日2粒飲んでるサプリのおかげもあると思う<br>
-                朝がラクになって、自分のこと考える余裕ができたの<br>
-                好きなもののために動ける自分が、ちょっと好きになれた
+                <div class="line-msg right">
+                    <div class="line-time">19:48</div>
+                    <div class="line-bubble">……ありがとう😭<br>「行っておいで」って言ってもらえるの<br>こんなに嬉しいと思わなかった</div>
+                </div>
+
+                <div class="line-msg right">
+                    <div class="line-time">19:49</div>
+                    <div class="line-bubble">毎日2粒のサプリ続けてたら<br>朝の余裕ができてきて<br>自分のこと考えられるようになったの<br>好きなもののために動ける自分が<br>ちょっと好きになれた</div>
+                </div>
             </div>
         </div>
         <div class="data-note">
@@ -1086,15 +1199,15 @@
 </section>
 
 <!-- ============================================ -->
-<!-- 11. 娘の総括 -->
+<!-- 12. 娘の総括 -->
 <!-- ============================================ -->
 <section class="section manga-section">
     <div class="manga-panel" style="background: linear-gradient(135deg, #FFE5E5 0%, #FFF0F5 100%);">
         <div class="manga-illustration" style="height: 500px;"></div>
         <div class="manga-text" style="padding: 40px;">
-            <strong style="font-size: 32px; color: #E85298;">「ママが自分の好きなこと<br>話してるの、はじめて見た」</strong>
+            <strong style="font-size: 32px; color: #E85298;">「ママが自分の好きなこと<br>楽しんでるの、すごくいい」</strong>
             <br><br>
-            <strong style="font-size: 28px; color: #333;">「クローゼットの奥のペンライト<br>やっと出してきたんだね」</strong>
+            <strong style="font-size: 28px; color: #333;">「クローゼットのペンライト<br>やっと出してきたんだね」</strong>
             <br><br>
             <strong style="font-size: 28px; color: #333;">「ママ、前よりいっぱい笑ってる」</strong>
             <br><br>
@@ -1104,7 +1217,7 @@
 </section>
 
 <!-- ============================================ -->
-<!-- 12. 商品説明 -->
+<!-- 13. 商品説明 -->
 <!-- ============================================ -->
 <section class="section product-section">
     <h2 class="section-title">「もう一回やってみようかな」を<br>「できる」に変える</h2>
@@ -1149,7 +1262,7 @@
         <strong style="font-size: 24px; color: #E85298;">「好きなことのために動ける自分」を<br>整えるための、毎日2粒の習慣</strong><br><br>
         <span style="font-size: 16px; color: #666;">
             推し活を再開したい。おしゃれを楽しみたい。<br>
-            「ママ」以外の自分を取り戻したい。<br>
+            「ママ」以外の自分も大切にしたい。<br>
             その第一歩を、すっぽん小町が支えます。
         </span>
     </div>
@@ -1163,7 +1276,7 @@
 </section>
 
 <!-- ============================================ -->
-<!-- 13. お客様の声 -->
+<!-- 14. お客様の声 -->
 <!-- ============================================ -->
 <section class="section article-section">
     <h2 class="section-title">推し活を再開して、<br>毎日が変わったママたち</h2>
@@ -1171,40 +1284,40 @@
     <div class="testimonial-grid">
         <div class="testimonial">
             <div class="testimonial-avatar">👩</div>
-            <div class="testimonial-name">M.Kさん（38歳・アイドル推し）</div>
+            <div class="testimonial-name">M.Kさん（42歳・アイドル推し）</div>
             <div class="testimonial-text">
-                「3年ぶりにFC入り直して、先行でチケット取れた時は泣きました。産後ずっと在宅勢だったけど、すっぽん小町のおかげか朝に余裕ができて、自分のことを考える時間が持てるようになりました。久しぶりの現場、最高でした」
+                「ずっとサブスクとYouTubeで追ってたけど、現場は何年も行けてなくて。すっぽん小町を始めてから朝の感じが変わってきて、"自分のこと"を考える余裕が出てきたんです。思い切ってFC入り直して、先行当たった時は泣きました」
             </div>
         </div>
 
         <div class="testimonial">
             <div class="testimonial-avatar">👩</div>
-            <div class="testimonial-name">Y.Sさん（41歳・俳優推し）</div>
+            <div class="testimonial-name">Y.Sさん（39歳・俳優推し）</div>
             <div class="testimonial-text">
-                「チケットの電子化についていけず諦めてたんですが、ママ友に教えてもらって復帰。すっぽん小町を始めてから夜泣き対応のあとも朝引きずらなくなって、自分の好きなことに向き合えるようになりました」
+                「電子チケットとか全然わかんなくて腰が重かったけど、ママ友に全部教えてもらいました。毎日2粒の習慣で朝がラクになってきて、自分のために動く余裕ができたのが大きかった。久しぶりの舞台、最高でした」
             </div>
         </div>
 
         <div class="testimonial">
             <div class="testimonial-avatar">👩</div>
-            <div class="testimonial-name">A.Tさん（36歳・K-POP推し）</div>
+            <div class="testimonial-name">A.Tさん（37歳・K-POP推し）</div>
             <div class="testimonial-text">
-                「出戻りオタクです（笑）。Xの空気変わりすぎてて最初怖かったけど、推し友見つけたら楽しくなりました。毎日2粒の習慣のおかげで、仕事のあとも『今日はサブスクで推しの配信見よう』って思える余裕があります」
+                「Xは見る専だったけど、推し友見つけたら楽しくなって復帰しました。毎日2粒の習慣のおかげで、仕事のあとも"今日は推しの配信見よう"って思える余裕があります。在宅と現場のハイブリッド、最高です」
             </div>
         </div>
 
         <div class="testimonial">
             <div class="testimonial-avatar">👩</div>
-            <div class="testimonial-name">R.Nさん（43歳・2.5次元推し）</div>
+            <div class="testimonial-name">R.Nさん（44歳・2.5次元推し）</div>
             <div class="testimonial-text">
-                「子どもが小学校に上がったタイミングで復帰。ブランク5年で浦島太郎でしたが、配信ライブから始めて徐々に現場にも行けるように。すっぽん小町は『自分のために動ける余裕づくり』の相棒です」
+                「子どもが小学校高学年になって時間はできてたのに、なんか腰が重くて。すっぽん小町で日常が整ってきたら『あれ、行けるかも』って自然に思えたんです。配信ライブから始めて、今は現場にも行けてます」
             </div>
         </div>
     </div>
 </section>
 
 <!-- ============================================ -->
-<!-- 14. データで安心感 -->
+<!-- 15. データで安心感 -->
 <!-- ============================================ -->
 <section class="section data-section">
     <h2 class="section-title">推し活再開、もう珍しくないです</h2>
@@ -1232,16 +1345,17 @@
     </div>
 
     <div class="manga-text" style="margin-top: 40px;">
-        <strong style="font-size: 28px; color: #E85298;">「また推せる自分」に、<br>戻れるんです</strong><br><br>
+        <strong style="font-size: 28px; color: #E85298;">「また推せる自分」に、<br>なれるんです</strong><br><br>
         <span style="font-size: 16px; color: #666;">
             推し活を中断した人の多くが、いつか再開しています。<br>
-            必要なのは「今の自分でもやっていいんだ」という許可だけ。
+            必要なのは「今の自分でもやっていいんだ」という気持ちと、<br>
+            そのために動ける毎日の余裕。
         </span>
     </div>
 </section>
 
 <!-- ============================================ -->
-<!-- 15. 商品詳細 -->
+<!-- 16. 商品詳細 -->
 <!-- ============================================ -->
 <section class="section product-section">
     <h2 class="section-title">すっぽん小町について</h2>
@@ -1288,7 +1402,7 @@
 </section>
 
 <!-- ============================================ -->
-<!-- 16. CTA -->
+<!-- 17. CTA -->
 <!-- ============================================ -->
 <section class="section cta-section">
     <div class="cta-title">
