@@ -3,7 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【パターン④フル版】子育てで現場から離れてたけど再開できる状態、でも最近の事情がわからず腰が重い人向け</title>
+    <title>すっぽん小町 | また推しに会いに行きたいママへ</title>
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'YOUR_PIXEL_ID'); // TODO: Replace YOUR_PIXEL_ID with actual Facebook Pixel ID
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
@@ -1105,6 +1122,53 @@
             color: #666;
         }
 
+        /* ===== インラインCTA ===== */
+        .inline-cta {
+            text-align: center;
+            padding: 40px 24px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .inline-cta-inner {
+            background: linear-gradient(135deg, #FFF5F8 0%, #FFF0F5 100%);
+            border-radius: 16px;
+            padding: 40px 24px;
+            border: 1px solid rgba(232, 82, 152, 0.1);
+        }
+
+        .inline-cta-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .cta-button-inline {
+            display: inline-block;
+            background: linear-gradient(135deg, #E85298 0%, #FF6B9D 100%);
+            color: white;
+            font-size: 18px;
+            font-weight: 900;
+            padding: 16px 48px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(232, 82, 152, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button-inline:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(232, 82, 152, 0.4);
+        }
+
+        .inline-cta-sub {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #999;
+        }
+
         /* ===== レスポンシブ ===== */
         @media (max-width: 768px) {
             .hero-title {
@@ -1464,6 +1528,15 @@
     </div>
 </section>
 
+<!-- Inline CTA 1: 日常の変化を見せた後 -->
+<div class="inline-cta">
+    <div class="inline-cta-inner">
+        <div class="inline-cta-text">まずは毎日の余裕から取り戻しませんか？</div>
+        <a href="#" class="cta-button-inline">30日間返品保証付きで試してみる</a>
+        <div class="inline-cta-sub">初回お届け時にプレゼントあり / いつでも中止・変更OK</div>
+    </div>
+</div>
+
 <!-- ============================================ -->
 <!-- 5. 転機：日常が整ったら、推し活が視野に入ってきた -->
 <!-- ============================================ -->
@@ -1679,6 +1752,15 @@
         <span>30〜34歳女性の推し活率は前年比＋8.2ポイント増。復帰組が確実に増えています</span>
     </div>
 </section>
+</div>
+
+<!-- Inline CTA 2: 現場復帰後 -->
+<div class="inline-cta">
+    <div class="inline-cta-inner">
+        <div class="inline-cta-text">「また推せる自分」に出会うための毎日2粒</div>
+        <a href="#" class="cta-button-inline">初回特別価格で試してみる</a>
+        <div class="inline-cta-sub">販売総数2,700万袋突破 / 30日間返品保証</div>
+    </div>
 </div>
 
 <!-- ============================================ -->
@@ -2237,6 +2319,15 @@
     </div>
 </section>
 
+<!-- Inline CTA 3: お客様の声の後 -->
+<div class="inline-cta">
+    <div class="inline-cta-inner">
+        <div class="inline-cta-text">もう一回、推してみませんか。</div>
+        <a href="#" class="cta-button-inline">初回特別価格で試してみる</a>
+        <div class="inline-cta-sub">30日間返品保証 / 毎回お得な割引あり / いつでも中止・変更OK</div>
+    </div>
+</div>
+
 <!-- ============================================ -->
 <!-- 16. データで安心感 -->
 <!-- ============================================ -->
@@ -2337,13 +2428,46 @@
             毎日2粒の習慣
         </div>
 
-        <a href="#" class="cta-button">公式サイトで詳しく見る</a>
+        <a href="#" class="cta-button">初回特別価格で試してみる</a>
 
         <div class="cta-subtext">
             30日間返品保証 / 毎回お得な割引あり / いつでも中止・変更OK
         </div>
     </div>
 </section>
+
+<!-- UTM Parameter Passthrough & CTA Link Setup -->
+<script>
+(function() {
+  // TODO: Replace with actual destination LP URL
+  var DEST_URL = 'https://example.com/suppon-komachi/';
+
+  var params = new URLSearchParams(window.location.search);
+  var trackParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'];
+  var passthrough = new URLSearchParams();
+
+  trackParams.forEach(function(key) {
+    if (params.has(key)) {
+      passthrough.set(key, params.get(key));
+    }
+  });
+
+  var destUrl = DEST_URL;
+  if (passthrough.toString()) {
+    destUrl += (DEST_URL.indexOf('?') > -1 ? '&' : '?') + passthrough.toString();
+  }
+
+  var ctaLinks = document.querySelectorAll('.cta-button, .cta-button-inline');
+  ctaLinks.forEach(function(link) {
+    link.href = destUrl;
+    link.addEventListener('click', function() {
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead');
+      }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
